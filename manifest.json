@@ -1,0 +1,24 @@
+{
+	"manifest_version": 2,
+
+	"name": "Feed Cleanup for YouTube™",
+	"description": "Collapses watched videos within a YouTube feed.",
+	"version": "0.2",
+
+	"icons": {"128": "yfc_128.png"},
+
+	"background": {
+		"scripts": ["background.js"]
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["http://www.youtube.com/feed/*"],
+			"js": ["yfc.js"]
+		}
+	],
+
+	"page_action": {
+		"default_icon": "yfc_19.png"
+	}
+}
