@@ -1,11 +1,11 @@
 var clutter = [
 	"feed-item-header",
-	"feed-item-thumb",
-	"metadata"
+	"yt-lockup-thumbnail",
+	"yt-lockup-meta",
+	"yt-lockup-description"
 ];
 
-var feeds = document.getElementsByClassName("feed-list")[0];
-var feed_len = feeds.childNodes.length;
+
 
 function hideClutter(node)
 {
@@ -22,18 +22,15 @@ function hideClutter(node)
 
 function cleanUp()
 {
+	var feeds = document.getElementsByClassName("feed-item-dismissable");
+	var feed_len = feeds.length;
+
 	for (var i = 0; i < feed_len; i++)
 	{
-		var child = feeds.childNodes[i];
-
-		// 3 for whitespace nodes, 8 for comment nodes
-		if (child.nodeType == 3 || child.nodeType == 8)
-			continue;
-
-		var watched = child.getElementsByClassName("watched").length > 0;
+		var watched = feeds[i].getElementsByClassName("watched").length > 0;
 
 		if (watched)
-			hideClutter(child);
+			hideClutter(feeds[i]);
 
 	}
 }
