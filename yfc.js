@@ -25,8 +25,6 @@ function cleanUp(start)
 {
 	var feeds = document.getElementsByClassName("feed-item-dismissable");
 
-	console.log("cleaning up from " + start + " to "  + feeds.length);
-
 	for (var i = start; i < feeds.length; i++)
 	{
 		var watched = feeds[i].getElementsByClassName("watched").length > 0;
