@@ -6,7 +6,7 @@ var clutter = [
 	"yt-lockup-badges"
 ];
 
-
+var feed_len = document.getElementsByClassName("feed-item-dismissable").length;
 
 function hideClutter(node)
 {
@@ -21,12 +21,13 @@ function hideClutter(node)
 	}
 }
 
-function cleanUp()
+function cleanUp(start)
 {
 	var feeds = document.getElementsByClassName("feed-item-dismissable");
-	var feed_len = feeds.length;
 
-	for (var i = 0; i < feed_len; i++)
+	console.log("cleaning up from " + start + " to "  + feeds.length);
+
+	for (var i = start; i < feeds.length; i++)
 	{
 		var watched = feeds[i].getElementsByClassName("watched").length > 0;
 
@@ -36,6 +37,19 @@ function cleanUp()
 	}
 }
 
+function periodicCheck()
+{
+	var current_len = document.getElementsByClassName("feed-item-dismissable").length;
+
+	if (current_len > feed_len)
+	{
+		cleanUp(feed_len);
+		feed_len = current_len;
+	}
+}
+
 chrome.extension.sendRequest({}, function(response) {});
-cleanUp();
+cleanUp(0);
+
+setInterval(periodicCheck, 1000);
 
