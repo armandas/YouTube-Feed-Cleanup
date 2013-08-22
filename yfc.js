@@ -2,7 +2,8 @@ var clutter = [
 	"feed-item-header",
 	"yt-lockup-thumbnail",
 	"yt-lockup-meta",
-	"yt-lockup-description"
+	"yt-lockup-description",
+	"yt-lockup-badges"
 ];
 
 
