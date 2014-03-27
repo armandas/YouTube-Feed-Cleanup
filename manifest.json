@@ -3,7 +3,7 @@
 
 	"name": "Feed Cleanup for YouTube™",
 	"description": "Collapses watched videos within a YouTube feed.",
-	"version": "0.3.1",
+	"version": "0.3.2",
 
 	"icons": {"128": "yfc_128.png"},
 
@@ -13,7 +13,7 @@
 
 	"content_scripts": [
 		{
-			"matches": ["http://www.youtube.com/feed/*"],
+			"matches": ["*://www.youtube.com/feed/*"],
 			"js": ["yfc.js"]
 		}
 	],
