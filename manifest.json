@@ -3,7 +3,7 @@
 
 	"name": "Feed Cleanup for YouTube™",
 	"description": "Collapses watched videos within a YouTube feed.",
-	"version": "0.3.2",
+	"version": "0.4",
 
 	"icons": {"128": "yfc_128.png"},
 
@@ -19,6 +19,12 @@
 	],
 
 	"page_action": {
-		"default_icon": "yfc_19.png"
-	}
+		"default_icon": "yfc_19.png",
+		"default_title": "Feed Cleanup",
+		"default_popup": "yfc_popup.html"
+	},
+
+	"permissions": [
+		"storage"
+	]
 }

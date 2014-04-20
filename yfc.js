@@ -7,6 +7,8 @@ var clutter = [
 ];
 
 var feed_len = document.getElementsByClassName("feed-item-dismissable").length;
+var cleanup_pos = 0;
+var yfc_hide_watched = false;
 
 function hideClutter(node)
 {
@@ -29,25 +31,44 @@ function cleanUp(start)
 	{
 		var watched = feeds[i].getElementsByClassName("watched").length > 0;
 
-		if (watched)
-			hideClutter(feeds[i]);
+		if (watched) {
+			if (yfc_hide_watched) {
+				feeds[i].style.display = 'none';
+			}
+			else {
+				feeds[i].style.display = '';
+				hideClutter(feeds[i]);
+			}
+		}
 
 	}
 }
 
 function periodicCheck()
 {
-	var current_len = document.getElementsByClassName("feed-item-dismissable").length;
-
-	if (current_len > feed_len)
+	chrome.storage.sync.get('yfc_hide_watched', function (items)
 	{
-		cleanUp(feed_len);
-		feed_len = current_len;
-	}
+		if (items['yfc_hide_watched'] != yfc_hide_watched) {
+			cleanup_pos = 0;
+			yfc_hide_watched = items['yfc_hide_watched'];
+		}
+
+		feed_len = document.getElementsByClassName("feed-item-dismissable").length;
+
+		if (cleanup_pos != feed_len) {
+			cleanUp(cleanup_pos);
+			cleanup_pos = feed_len;
+		}
+	});
 }
 
-chrome.extension.sendRequest({}, function(response) {});
-cleanUp(0);
+chrome.storage.sync.get('yfc_hide_watched', function (items)
+{
+	yfc_hide_watched = items['yfc_hide_watched'];
 
-setInterval(periodicCheck, 1000);
+	chrome.runtime.sendMessage({'start': true});
+	cleanUp(0);
+
+	setInterval(periodicCheck, 1000);
+});
 

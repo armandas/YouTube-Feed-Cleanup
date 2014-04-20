@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+	<head>
+		<title>YFC</title>
+		<style type="text/css">
+			body {
+				margin: 3px;
+				padding: 3px;
+				font-family: arial, sans-serif;
+				color: #333;
+				font-size: 13px;
+				background-color: #fbfbfb;
+			}
+
+			.yfc_option {
+				display: block;
+				width: 195px;
+				cursor: pointer;
+				padding: 8px 8px;
+			}
+
+			.yfc_option:hover {
+				background-color: #444;
+				color: #fff;
+			}
+
+			.yfc_option .yfc_watched_icon {
+				display: block;
+				float: left;
+				background-image: url('check-2x.png');
+				background-repeat: no-repeat;
+				width: 16px;
+				height: 16px;
+			}
+
+			.yfc_option:hover .yfc_watched_icon {
+				display: block;
+				float: left;
+				background-image: url('check-2x.png');
+				background-repeat: no-repeat;
+				background-position: 0px -16px;
+				width: 16px;
+				height: 16px;
+			}
+
+			.yfc_option_text {
+				display: block;
+				float: left;
+				margin-left: 10px;
+				height: 16px;
+				line-height: 16px;
+			}
+
+			.clear {
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="yfc_option" id="hide_watched_button">
+			<span class="yfc_watched_icon"></span>
+			<span class="yfc_option_text" id="hide_watched_text">Toggle watched videos</span>
+			<div class="clear"></div>
+		</div>
+	</body>
+	<script src="yfc_popup.js"></script>
+</html>
