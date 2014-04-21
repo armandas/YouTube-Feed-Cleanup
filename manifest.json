@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 
 	"name": "Feed Cleanup for YouTube™",
-	"description": "Collapses watched videos within a YouTube feed.",
+	"description": "Collapses or hides watched videos within a YouTube feed.",
 	"version": "0.4",
 
 	"icons": {"128": "yfc_128.png"},
