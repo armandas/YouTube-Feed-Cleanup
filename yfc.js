@@ -1,12 +1,11 @@
 var clutter = [
-	"feed-item-header",
 	"yt-lockup-thumbnail",
 	"yt-lockup-meta",
 	"yt-lockup-description",
 	"yt-lockup-badges"
 ];
 
-var feed_len = document.getElementsByClassName("feed-item-dismissable").length;
+var feed_len = document.getElementsByClassName("feed-item-container").length;
 var cleanup_pos = 0;
 var yfc_hide_watched = false;
 
@@ -25,7 +24,7 @@ function hideClutter(node)
 
 function cleanUp(start)
 {
-	var feeds = document.getElementsByClassName("feed-item-dismissable");
+	var feeds = document.getElementsByClassName("feed-item-container");
 
 	for (var i = start; i < feeds.length; i++)
 	{
@@ -53,7 +52,7 @@ function periodicCheck()
 			yfc_hide_watched = items['yfc_hide_watched'];
 		}
 
-		feed_len = document.getElementsByClassName("feed-item-dismissable").length;
+		feed_len = document.getElementsByClassName("feed-item-container").length;
 
 		if (cleanup_pos != feed_len) {
 			cleanUp(cleanup_pos);
