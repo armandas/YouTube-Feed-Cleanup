@@ -2,7 +2,8 @@ var clutter = [
 	"yt-lockup-thumbnail",
 	"yt-lockup-meta",
 	"yt-lockup-description",
-	"yt-lockup-badges"
+	"yt-lockup-badges",
+	"yt-lockup-byline"
 ];
 
 var feed_len = document.getElementsByClassName("feed-item-container").length;
