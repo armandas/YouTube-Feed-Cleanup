@@ -2,11 +2,10 @@ var clutter = [
 	"yt-lockup-thumbnail",
 	"yt-lockup-meta",
 	"yt-lockup-description",
-	"yt-lockup-badges",
 	"yt-lockup-byline"
 ];
 
-var feed_len = document.getElementsByClassName("feed-item-container").length;
+var feed_len = document.getElementsByClassName("item-section").length;
 var cleanup_pos = 0;
 var yfc_hide_watched = false;
 
@@ -16,7 +15,8 @@ function hideClutter(node)
 
 	for (var i = 0; i < len; i++)
 	{
-		ce = node.getElementsByClassName(clutter[i])[0];
+		de = node.getElementsByClassName("yt-lockup-dismissable")[0];
+		ce = de.getElementsByClassName(clutter[i])[0];
 
 		if (ce)
 			ce.style.display = 'none';
@@ -25,7 +25,7 @@ function hideClutter(node)
 
 function cleanUp(start)
 {
-	var feeds = document.getElementsByClassName("feed-item-container");
+	var feeds = document.getElementsByClassName("item-section");
 
 	for (var i = start; i < feeds.length; i++)
 	{
