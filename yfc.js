@@ -4,7 +4,6 @@ var clutter = [
 	"ytd-thumbnail"
 ];
 
-var yfc_feed = document.getElementById("contents").childNodes;
 var yfc_hide_watched = false;
 
 function hideClutter(node)
@@ -22,6 +21,13 @@ function hideClutter(node)
 
 function cleanUp(start)
 {
+    var contents = document.getElementById("contents");
+    if (contents === null) {
+        return;
+    }
+
+    var yfc_feed = contents.childNodes;
+
 	for (var i = start; i < yfc_feed.length; i++)
 	{
 		var watched = yfc_feed[i].getElementsByTagName("ytd-thumbnail-overlay-resume-playback-renderer").length > 0;
