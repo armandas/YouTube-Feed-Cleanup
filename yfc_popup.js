@@ -1,19 +1,24 @@
-chrome.storage.sync.get('yfc_hide_watched', function (items)
-{
-	if (items['yfc_hide_watched'] == true) {
-		document.getElementById('hide_watched_text').textContent = 'Show watched videos';
-	}
-	else {
-		document.getElementById('hide_watched_text').textContent = 'Hide watched videos';
-	}
-});
+function onError(e) {
+    console.error(e);
+}
 
-document.getElementById('hide_watched_button').addEventListener('click', function ()
-{
-	chrome.storage.sync.get('yfc_hide_watched', function (items)
-	{
-		chrome.storage.sync.set({'yfc_hide_watched': !items['yfc_hide_watched']}, function () {
-			window.close();
-		});
-	});
+function updateUI(settings) {
+    console.log(settings);
+    var icon = document.getElementById('yfc_watched_icon');
+
+    if (settings['yfc_show_watched'] == true) {
+        icon.className = "yfc_option_on"
+    }
+    else {
+        icon.className = "yfc_option_off"
+    }
+}
+
+let results = browser.storage.local.get('yfc_show_watched').then(updateUI, onError);
+
+document.getElementById('hide_watched_button').addEventListener('click', function () {
+    browser.storage.local.get('yfc_show_watched').then(function (setting) {
+        browser.storage.local.set({ 'yfc_show_watched': !setting['yfc_show_watched'] });
+        window.close();
+    });
 });

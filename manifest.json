@@ -18,7 +18,7 @@
 		}
 	],
 
-	"page_action": {
+	"browser_action": {
 		"default_icon": "yfc_19.png",
 		"default_title": "Feed Cleanup",
 		"default_popup": "yfc_popup.html"

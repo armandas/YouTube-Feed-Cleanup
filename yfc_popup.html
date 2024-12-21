@@ -19,36 +19,33 @@
 				padding: 8px 8px;
 			}
 
-			.yfc_option:hover {
-				background-color: #444;
-				color: #fff;
-			}
-
-			.yfc_option .yfc_watched_icon {
+			.yfc_option_on {
 				display: block;
 				float: left;
 				background-image: url('check-2x.png');
 				background-repeat: no-repeat;
-				width: 16px;
-				height: 16px;
+                background-size: 32px 38px;
+				width: 32px;
+				height: 19px;
 			}
 
-			.yfc_option:hover .yfc_watched_icon {
+			.yfc_option_off {
 				display: block;
 				float: left;
 				background-image: url('check-2x.png');
 				background-repeat: no-repeat;
-				background-position: 0px -16px;
-				width: 16px;
-				height: 16px;
+                background-size: 32px 38px;
+				background-position: 0px -19px;
+				width: 32px;
+				height: 19px;
 			}
 
 			.yfc_option_text {
 				display: block;
 				float: left;
 				margin-left: 10px;
-				height: 16px;
-				line-height: 16px;
+				height: 19px;
+				line-height: 19px;
 			}
 
 			.clear {
@@ -58,8 +55,8 @@
 	</head>
 	<body>
 		<div class="yfc_option" id="hide_watched_button">
-			<span class="yfc_watched_icon"></span>
-			<span class="yfc_option_text" id="hide_watched_text">Toggle watched videos</span>
+			<span id="yfc_watched_icon" class="yfc_option_on"></span>
+			<span class="yfc_option_text" id="hide_watched_text">Show watched videos</span>
 			<div class="clear"></div>
 		</div>
 	</body>
