@@ -26,7 +26,7 @@ function cleanUp(start) {
     var yfc_feed = contents.childNodes;
 
     for (var i = start; i < yfc_feed.length; i++) {
-        var watched = yfc_feed[i].getElementsByTagName("ytd-thumbnail-overlay-resume-playback-renderer").length > 0;
+        var watched = yfc_feed[i].getElementsByTagName("yt-thumbnail-overlay-progress-bar-view-model").length > 0;
 
         if (watched) {
             if (yfc_show_watched) {
