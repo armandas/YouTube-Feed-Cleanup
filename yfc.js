@@ -42,19 +42,19 @@ function cleanUp(start) {
 }
 
 function periodicCheck() {
-    browser.storage.local.get('yfc_show_watched', function (items) {
+    chrome.storage.local.get('yfc_show_watched', function (items) {
         yfc_show_watched = items['yfc_show_watched'];
     });
 
     cleanUp(0);
 }
 
-browser.storage.local.get('yfc_show_watched', function (items) {
+chrome.storage.local.get('yfc_show_watched', function (items) {
     yfc_show_watched = items['yfc_show_watched'];
 
     if (yfc_show_watched !== true) yfc_show_watched = false;
 
-    browser.runtime.sendMessage({ 'start': true });
+    chrome.runtime.sendMessage({ 'start': true });
     cleanUp(0);
 
     setInterval(periodicCheck, 2000);
