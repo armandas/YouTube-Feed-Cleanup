@@ -5,6 +5,7 @@ var clutter = [
 ];
 
 var yfc_show_watched = false;
+var yfc_show_shorts = false;
 
 function hideClutter(node) {
     var len = clutter.length;
@@ -39,20 +40,27 @@ function cleanUp(start) {
         }
 
     }
+
+    var shortsShelves = document.querySelectorAll('ytd-rich-shelf-renderer[is-shorts]');
+    shortsShelves.forEach(function(shelf) {
+        shelf.style.display = yfc_show_shorts ? '' : 'none';
+    });
 }
 
 function periodicCheck() {
-    chrome.storage.local.get('yfc_show_watched', function (items) {
+    chrome.storage.local.get(['yfc_show_watched', 'yfc_show_shorts'], function (items) {
         yfc_show_watched = items['yfc_show_watched'];
+        yfc_show_shorts = items['yfc_show_shorts'] === true ? true : false;
     });
 
     cleanUp(0);
 }
 
-chrome.storage.local.get('yfc_show_watched', function (items) {
+chrome.storage.local.get(['yfc_show_watched', 'yfc_show_shorts'], function (items) {
     yfc_show_watched = items['yfc_show_watched'];
-
     if (yfc_show_watched !== true) yfc_show_watched = false;
+
+    yfc_show_shorts = items['yfc_show_shorts'] === true ? true : false;
 
     chrome.runtime.sendMessage({ 'start': true });
     cleanUp(0);
